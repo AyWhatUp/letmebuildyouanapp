@@ -7,7 +7,7 @@ body {
     position: relative;
     transition: background 0.5s ease;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 2px 2px 6px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; /* Ensure consistent sizing */
+    box-sizing: border-box;
 }
 
 #background-canvas {
@@ -204,14 +204,14 @@ h2 {
     align-items: center;
     justify-content: space-between;
     margin: 30px auto;
-    padding: 10px 15px;
+    padding: 12.5px 18.75px; /* 25% increase from 10px 15px */
     background: linear-gradient(90deg, #25D366, #1a7f5a);
     color: white;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 25px; /* 25% increase from 20px */
     text-align: left;
-    width: 200px;
-    min-height: 45px;
+    width: 250px; /* 25% increase from 200px */
+    min-height: 57px; /* 25% increase from 45px, rounded */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.2);
@@ -224,9 +224,9 @@ h2 {
 }
 
 .whatsapp-btn .whatsapp-icon {
-    margin-left: 5px;
-    height: 1.2em;
-    width: 1.2em;
+    margin-left: 6.25px; /* 25% increase from 5px */
+    height: 1.5em; /* 25% increase from 1.2em */
+    width: 1.5em; /* 25% increase from 1.2em */
     object-fit: contain;
     vertical-align: middle;
     box-sizing: border-box;
@@ -235,8 +235,8 @@ h2 {
 .whatsapp-btn span {
     flex: 1;
     white-space: nowrap;
-    padding-right: 5px;
-    font-size: 1.05em;
+    padding-right: 6.25px; /* 25% increase from 5px */
+    font-size: 1.3125em; /* 25% increase from 1.05em */
     box-sizing: border-box;
 }
 
@@ -262,6 +262,7 @@ h2 {
     background: rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;
+    width: 100%; /* Ensure full width */
 }
 
 .site-footer .logo {
@@ -296,9 +297,9 @@ footer {
     }
     .header, .steps, .story, .footer {
         padding: 10px;
-        max-width: 90vw; /* Use viewport width for consistency */
+        max-width: 90vw;
         margin: 0 auto;
-        width: 100%; /* Full width with max constraint */
+        width: 100%;
         box-sizing: border-box;
     }
     h1 {
@@ -328,18 +329,17 @@ footer {
         box-sizing: border-box;
     }
     .whatsapp-btn {
-        min-height: 40px;
-        padding: 8px 15px;
-        box-sizing: border-box;
+        min-height: 50px; /* 25% increase from 40px */
+        padding: 10px 18.75px; /* 25% increase from 8px 15px */
+        width: 312.5px; /* 25% increase from 250px */
+        border-radius: 25px; /* Consistent with desktop */
     }
     .whatsapp-btn .whatsapp-icon {
-        height: 1em;
-        width: 1em;
-        box-sizing: border-box;
+        height: 1.25em; /* 25% increase from 1em */
+        width: 1.25em; /* 25% increase from 1em */
     }
     .whatsapp-btn span {
-        font-size: 0.95em;
-        box-sizing: border-box;
+        font-size: 1.1875em; /* 25% increase from 0.95em */
     }
     .site-footer {
         flex-direction: column;
