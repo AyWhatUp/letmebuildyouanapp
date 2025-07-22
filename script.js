@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
-    body.style.background = '#da17eb';
+    body.style.background = '#da17eb'; // Fixed to first section color
     const sections = document.querySelectorAll('.header, .steps, .story, .footer');
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
@@ -45,26 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
     }
     animate();
-
-    const colors = ['#da17eb', '#ff8c00', '#4a90e2', '#2ecc71'];
-    let currentSection = 0;
-
-    function updateBackground() {
-        const scrollPosition = window.scrollY + window.innerHeight / 2; // Check middle of viewport
-        const sectionHeight = window.innerHeight;
-        const newSection = Math.min(Math.floor(scrollPosition / sectionHeight), sections.length - 1);
-
-        if (newSection !== currentSection) {
-            currentSection = newSection;
-            body.style.background = colors[currentSection % colors.length];
-            body.style.transition = 'background 0.5s ease';
-            setTimeout(() => { body.style.transition = ''; }, 500);
-        }
-    }
-
-    window.addEventListener('scroll', updateBackground, { passive: true });
-    window.addEventListener('touchmove', updateBackground, { passive: true });
-    requestAnimationFrame(updateBackground); // Initial call
 
     console.log('Website loaded!');
 });
