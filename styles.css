@@ -121,7 +121,7 @@ h2 {
 .steps-container {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 90%; /* Narrower to match other sections */
     margin: 0 auto;
 }
 
@@ -154,7 +154,14 @@ h2 {
     margin: 0 0 20px;
     font-size: 1.2em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 2px 2px 6px rgba(0, 0, 0, 0.2);
+    /* Add line breaks for narrower text */
+    white-space: pre-wrap; /* Allows manual line breaks */
 }
+.steps li:nth-child(1) { content: "1 You send us a message on WhatsApp with a brief idea about the app you want, and some info about you."; }
+.steps li:nth-child(2) { content: "2 We respond, and schedule a virtual meeting with you (e.g., on Zoom)."; }
+.steps li:nth-child(3) { content: "3 During the meeting, we discuss everything, you get to know us, and we agree on how to move forward."; }
+.steps li:nth-child(4) { content: "4 Once we start, we'll have one or more follow-up calls to set things up, then we do the rest."; }
+.steps li:nth-child(5) { content: "5 You get your app delivered, and we help or teach you manage everything moving forward."; }
 
 .steps li span {
     position: absolute;
@@ -260,9 +267,9 @@ footer {
     }
     .header, .steps, .story, .footer {
         padding: 10px;
-        max-width: 100%;
-        margin: 0;
-        width: 100vw;
+        max-width: 90%; /* Consistent width for all sections */
+        margin: 0 auto;
+        width: auto; /* Adjust to content */
         box-sizing: border-box;
     }
     h1 {
