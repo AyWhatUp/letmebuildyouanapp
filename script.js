@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         mouse.x = event.x;
         mouse.y = event.y;
     });
+    canvas.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        mouse.x = touch.clientX;
+        mouse.y = touch.clientY;
+    }, { passive: true });
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,36 +50,32 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = 'rgba(0, 255, 255, 0.5)';
             ctx.fill();
 
-            // Apply continuous natural movement with slight refresh
             p.x += p.speedX;
             p.y += p.speedY;
             p.speedX += (Math.random() * 0.02 - 0.01);
             p.speedY += (Math.random() * 0.02 - 0.01);
 
-            // Repulsion effect from mouse
             if (mouse.x !== null && mouse.y !== null) {
                 const dx = p.x - mouse.x;
                 const dy = p.y - mouse.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                const repulsionRadius = 100;
+                const repulsionRadius = 150; // Increased for visibility
                 if (distance < repulsionRadius) {
-                    const force = (repulsionRadius - distance) / repulsionRadius * 0.4;
+                    const force = (repulsionRadius - distance) / repulsionRadius * 0.6; // Increased force
                     p.repelX = (dx / distance) * force * 2;
                     p.repelY = (dy / distance) * force * 2;
-                    p.repelDecay = 20;
+                    p.repelDecay = 30; // Extended decay
                 }
             }
 
-            // Apply and decay repulsion
             if (p.repelDecay > 0) {
                 p.speedX += p.repelX;
                 p.speedY += p.repelY;
                 p.repelDecay -= 1;
-                p.repelX *= 0.8;
-                p.repelY *= 0.8;
+                p.repelX *= 0.7; // Slower decay
+                p.repelY *= 0.7;
             }
 
-            // Boundary check with minimal energy loss
             if (p.x < 0 || p.x > canvas.width) p.speedX *= -0.95;
             if (p.y < 0 || p.y > canvas.height) p.speedY *= -0.95;
         }
@@ -98,7 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 body.style.transition = '';
             }, 500);
         }
-    });
+    }, { passive: true });
+    window.addEventListener('touchmove', () => {
+        const scrollPosition = window.scrollY;
+        const sectionHeight = window.innerHeight;
+        const newSection = Math.floor(scrollPosition / sectionHeight);
+
+        if (newSection !== currentSection && newSection < sections.length) {
+            currentSection = newSection;
+            body.style.background = colors[currentSection % colors.length];
+            body.style.transition = 'background 0.5s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 500);
+        }
+    }, { passive: true });
 
     console.log('Website loaded!');
 });
