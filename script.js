@@ -26,16 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousemove', (event) => { mouse.x = event.x; mouse.y = event.y; });
     canvas.addEventListener('touchmove', (event) => { const touch = event.touches[0]; mouse.x = touch.clientX; mouse.y = touch.clientY; }, { passive: true });
 
+    let gradientOffset = 0;
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Gradient overlay animation
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+        // Enhanced gradient overlay with animation
+        gradientOffset = (gradientOffset + 0.5) % canvas.width; // Slow horizontal shift
+        const gradient = ctx.createLinearGradient(gradientOffset, 0, gradientOffset + canvas.width / 2, 0);
         gradient.addColorStop(0, 'transparent');
-        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.1)');
+        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.3)'); // More visible
         gradient.addColorStop(1, 'transparent');
         ctx.fillStyle = gradient;
-        ctx.globalAlpha = 0.3;
+        ctx.globalAlpha = 0.5; // Increased visibility
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 1.0;
 
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (newSection !== currentSection) {
             currentSection = newSection;
-            if (window.innerWidth > 600) { // Color change only on desktop
+            if (window.innerWidth > 600) {
                 body.style.background = colors[currentSection % colors.length];
                 body.style.transition = 'background 0.5s ease';
                 setTimeout(() => { body.style.transition = ''; }, 500);
