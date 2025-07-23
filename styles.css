@@ -204,14 +204,14 @@ h2 {
     align-items: center;
     justify-content: space-between;
     margin: 30px auto;
-    padding: 12.5px 18.75px; /* 25% increase */
+    padding: 12.5px 18.75px;
     background: linear-gradient(90deg, #25D366, #1a7f5a);
     color: white;
     text-decoration: none;
-    border-radius: 25px; /* 25% increase */
+    border-radius: 25px;
     text-align: left;
-    width: 250px; /* 25% increase */
-    min-height: 57px; /* 25% increase, rounded */
+    width: 250px;
+    min-height: 57px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.2);
@@ -224,9 +224,9 @@ h2 {
 }
 
 .whatsapp-btn .whatsapp-icon {
-    margin-left: 6.25px; /* 25% increase */
-    height: 1.5em; /* 25% increase */
-    width: 1.5em; /* 25% increase */
+    margin-left: 6.25px;
+    height: 1.5em;
+    width: 1.5em;
     object-fit: contain;
     vertical-align: middle;
     box-sizing: border-box;
@@ -235,8 +235,8 @@ h2 {
 .whatsapp-btn span {
     flex: 1;
     white-space: nowrap;
-    padding-right: 6.25px; /* 25% increase */
-    font-size: 1.3125em; /* 25% increase */
+    padding-right: 6.25px;
+    font-size: 1.3125em;
     box-sizing: border-box;
 }
 
@@ -329,17 +329,17 @@ footer {
         box-sizing: border-box;
     }
     .whatsapp-btn {
-        min-height: 57px; /* 25% increase */
-        padding: 12.5px 18.75px; /* 25% increase */
-        width: 250px; /* 25% increase */
-        border-radius: 25px; /* 25% increase */
+        min-height: 57px;
+        padding: 12.5px 18.75px;
+        width: 250px;
+        border-radius: 25px;
     }
     .whatsapp-btn .whatsapp-icon {
-        height: 1.5em; /* 25% increase */
-        width: 1.5em; /* 25% increase */
+        height: 1.5em;
+        width: 1.5em;
     }
     .whatsapp-btn span {
-        font-size: 1.3125em; /* 25% increase */
+        font-size: 1.3125em;
     }
     .site-footer {
         flex-direction: column;
@@ -352,9 +352,24 @@ footer {
     }
     /* Phone-specific phone number styling */
     small {
-        color: white !important; /* Force white */
-        text-decoration: none; /* Prevent link underline */
-        pointer-events: none; /* Disable link behavior */
-        text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+        color: white !important;
+        text-decoration: none;
+        pointer-events: none;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width: 375px) { /* Target iPhone 8 and smaller */
+    .header {
+        padding-top: 80px; /* Increase top padding to make space */
+    }
+    .logo {
+        position: static; /* Move logo below headline */
+        margin: 10px auto;
+        top: auto;
+        left: auto;
+    }
+    h1 {
+        margin-top: 20px; /* Ensure headline has space */
     }
 }

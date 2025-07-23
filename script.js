@@ -72,17 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const colors = ['#da17eb', '#ff8c00', '#4a90e2', '#2ecc71'];
     let currentColorIndex = 0;
 
-    function changeBackgroundColor() {
-        body.style.background = colors[currentColorIndex];
-        body.style.transition = 'background 1s ease'; // Smooth 1-second transition
-        setTimeout(() => { body.style.transition = ''; }, 1000); // Reset transition after effect
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-    }
+    // Detect Safari (simplified check)
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+        body.style.background = colors[0]; // Stick to first color for Safari
+    } else {
+        function changeBackgroundColor() {
+            body.style.background = colors[currentColorIndex];
+            body.style.transition = 'background 1s ease';
+            setTimeout(() => { body.style.transition = ''; }, 1000);
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+        }
 
-    // Initial color
-    changeBackgroundColor();
-    // Change every 10 seconds
-    setInterval(changeBackgroundColor, 10000);
+        // Initial color
+        changeBackgroundColor();
+        // Change every 10 seconds for non-Safari browsers
+        setInterval(changeBackgroundColor, 10000);
+    }
 
     console.log('Website loaded!');
 });
