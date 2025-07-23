@@ -200,19 +200,18 @@ h2 {
 
 .whatsapp-btn {
     font-family: 'Roboto Condensed', sans-serif;
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Revert to horizontal */
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 30px auto;
-    padding: 12.5px 18.75px;
+    padding: 10px 15px; /* Revert to original padding */
     background: linear-gradient(90deg, #25D366, #1a7f5a);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
-    text-align: center;
-    width: 250px;
-    min-height: 57px;
+    border-radius: 20px; /* Revert to original radius */
+    text-align: left;
+    width: 200px; /* Revert to original width */
+    min-height: 45px; /* Revert to original height */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.2);
@@ -225,9 +224,9 @@ h2 {
 }
 
 .whatsapp-btn .whatsapp-icon {
-    margin-left: 6.25px;
-    height: 1.5em;
-    width: 1.5em;
+    margin-left: 5px; /* Revert to original margin */
+    height: 1.2em; /* Revert to original size */
+    width: 1.2em; /* Revert to original size */
     object-fit: contain;
     vertical-align: middle;
     box-sizing: border-box;
@@ -236,8 +235,8 @@ h2 {
 .whatsapp-btn span {
     flex: 1;
     white-space: nowrap;
-    padding-right: 6.25px;
-    font-size: 1.3125em;
+    padding-right: 5px; /* Revert to original padding */
+    font-size: 1.05em; /* Revert to original font size */
     box-sizing: border-box;
 }
 
@@ -330,17 +329,17 @@ footer {
         box-sizing: border-box;
     }
     .whatsapp-btn {
-        min-height: 50px;
-        padding: 10px 18.75px;
-        width: 312.5px;
-        border-radius: 25px;
+        min-height: 45px; /* Revert to original */
+        padding: 10px 15px; /* Revert to original */
+        width: 200px; /* Revert to original */
+        border-radius: 20px; /* Revert to original */
     }
     .whatsapp-btn .whatsapp-icon {
-        height: 1.25em;
-        width: 1.25em;
+        height: 1.2em; /* Revert to original */
+        width: 1.2em; /* Revert to original */
     }
     .whatsapp-btn span {
-        font-size: 1.1875em;
+        font-size: 1.05em; /* Revert to original */
     }
     .site-footer {
         flex-direction: column;
@@ -350,5 +349,10 @@ footer {
         margin-right: 0;
         margin-bottom: 10px;
         box-sizing: border-box;
+    }
+    /* Phone-specific phone number styling */
+    small {
+        color: white !important; /* Force white text on mobile */
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); /* Subtle shadow for readability */
     }
 }

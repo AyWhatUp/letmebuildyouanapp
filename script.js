@@ -26,19 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousemove', (event) => { mouse.x = event.x; mouse.y = event.y; });
     canvas.addEventListener('touchmove', (event) => { const touch = event.touches[0]; mouse.x = touch.clientX; mouse.y = touch.clientY; }, { passive: true });
 
-    let gradientOffset = 0;
+    let gradientOffset = 0; // Start from left edge
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Enhanced gradient overlay with faster, more visible animation
-        gradientOffset = (gradientOffset + 2) % canvas.width; // Faster shift
-        const gradient = ctx.createLinearGradient(gradientOffset, 0, gradientOffset + canvas.width / 2, 0);
+        // Subtle gradient overlay starting from left edge
+        gradientOffset = (gradientOffset + 1) % canvas.width; // Slower shift
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width / 4, 0); // Narrower gradient
         gradient.addColorStop(0, 'transparent');
-        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.5)'); // More vibrant
-        gradient.addColorStop(0.7, 'rgba(147, 112, 219, 0.3)'); // Subtle purple
+        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.1)'); // Less intense
         gradient.addColorStop(1, 'transparent');
         ctx.fillStyle = gradient;
-        ctx.globalAlpha = 0.7; // More visible
+        ctx.globalAlpha = 0.3; // More subtle
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 1.0;
 
