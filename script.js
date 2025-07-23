@@ -22,25 +22,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const glimmerParticles = [];
+    for (let i = 0; i < 20; i++) { // Fewer glimmer particles for subtlety
+        glimmerParticles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            speed: 1.5 + Math.random() * 0.5, // Elegant speed range
+            radius: Math.random() * 2 + 1,
+            opacity: Math.random() * 0.4 + 0.2 // Subtle opacity
+        });
+    }
+
     const mouse = { x: null, y: null };
     canvas.addEventListener('mousemove', (event) => { mouse.x = event.x; mouse.y = event.y; });
     canvas.addEventListener('touchmove', (event) => { const touch = event.touches[0]; mouse.x = touch.clientX; mouse.y = touch.clientY; }, { passive: true });
 
-    let gradientOffset = 0; // Start from left edge
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Subtle gradient overlay starting from left edge
-        gradientOffset = (gradientOffset + 1) % canvas.width; // Slower shift
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width / 4, 0); // Narrower gradient
-        gradient.addColorStop(0, 'transparent');
-        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.1)'); // Less intense
-        gradient.addColorStop(1, 'transparent');
-        ctx.fillStyle = gradient;
-        ctx.globalAlpha = 0.3; // More subtle
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.globalAlpha = 1.0;
+        // Glimmer wave effect
+        glimmerParticles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`; // White sparkles
+            ctx.fill();
+            p.x += p.speed; // Move right
+            if (p.x > canvas.width) p.x = 0; // Reset to left edge
+            p.y += (Math.random() - 0.5) * 0.5; // Slight vertical drift
+            if (p.y < 0 || p.y > canvas.height) p.y = Math.random() * canvas.height; // Keep in bounds
+        });
 
+        // Particle animation
         for (let i = 0; i < particles.length; i++) {
             let p = particles[i];
             ctx.beginPath();
