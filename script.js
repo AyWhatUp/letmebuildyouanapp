@@ -30,14 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Enhanced gradient overlay with animation
-        gradientOffset = (gradientOffset + 0.5) % canvas.width; // Slow horizontal shift
+        // Enhanced gradient overlay with faster, more visible animation
+        gradientOffset = (gradientOffset + 2) % canvas.width; // Faster shift
         const gradient = ctx.createLinearGradient(gradientOffset, 0, gradientOffset + canvas.width / 2, 0);
         gradient.addColorStop(0, 'transparent');
-        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.3)'); // More visible
+        gradient.addColorStop(0.5, 'rgba(74, 144, 226, 0.5)'); // More vibrant
+        gradient.addColorStop(0.7, 'rgba(147, 112, 219, 0.3)'); // Subtle purple
         gradient.addColorStop(1, 'transparent');
         ctx.fillStyle = gradient;
-        ctx.globalAlpha = 0.5; // Increased visibility
+        ctx.globalAlpha = 0.7; // More visible
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 1.0;
 

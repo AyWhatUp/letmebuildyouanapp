@@ -201,7 +201,7 @@ h2 {
 .whatsapp-btn {
     font-family: 'Roboto Condensed', sans-serif;
     display: flex;
-    flex-direction: column; /* Stack label and number vertically */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 30px auto;
@@ -218,21 +218,6 @@ h2 {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     box-sizing: border-box;
-}
-
-.header .whatsapp-btn, .footer .whatsapp-btn { /* Target first and last buttons */
-    position: relative;
-}
-.header .whatsapp-btn span, .footer .whatsapp-btn span {
-    font-size: 1.3125em;
-}
-.header .whatsapp-btn::after, .footer .whatsapp-btn::after {
-    content: "+9647719581345";
-    display: block;
-    font-size: 0.8em; /* Smaller, subtle text */
-    color: #d3d3d3; /* Light gray for professionalism */
-    text-align: center;
-    margin-top: 2px;
 }
 
 .header .whatsapp-btn {
