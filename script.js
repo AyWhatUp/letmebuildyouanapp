@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
-    const sections = document.querySelectorAll('.header, .steps, .story, .footer');
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -23,13 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const glimmerParticles = [];
-    for (let i = 0; i < 20; i++) { // Fewer glimmer particles for subtlety
+    for (let i = 0; i < 20; i++) {
         glimmerParticles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            speed: 1.5 + Math.random() * 0.5, // Elegant speed range
+            speed: 1.5 + Math.random() * 0.5,
             radius: Math.random() * 2 + 1,
-            opacity: Math.random() * 0.4 + 0.2 // Subtle opacity
+            opacity: Math.random() * 0.4 + 0.2
         });
     }
 
@@ -44,12 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
         glimmerParticles.forEach(p => {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`; // White sparkles
+            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
             ctx.fill();
-            p.x += p.speed; // Move right
-            if (p.x > canvas.width) p.x = 0; // Reset to left edge
-            p.y += (Math.random() - 0.5) * 0.5; // Slight vertical drift
-            if (p.y < 0 || p.y > canvas.height) p.y = Math.random() * canvas.height; // Keep in bounds
+            p.x += p.speed;
+            if (p.x > canvas.width) p.x = 0;
+            p.y += (Math.random() - 0.5) * 0.5;
+            if (p.y < 0 || p.y > canvas.height) p.y = Math.random() * canvas.height;
         });
 
         // Particle animation
@@ -71,26 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
     animate();
 
     const colors = ['#da17eb', '#ff8c00', '#4a90e2', '#2ecc71'];
-    let currentSection = 0;
+    let currentColorIndex = 0;
 
-    function updateBackground() {
-        const scrollPosition = window.scrollY + (window.innerHeight / 2);
-        const sectionHeight = window.innerHeight;
-        const newSection = Math.min(Math.floor(scrollPosition / sectionHeight), sections.length - 1);
-
-        if (newSection !== currentSection) {
-            currentSection = newSection;
-            if (window.innerWidth > 600) {
-                body.style.background = colors[currentSection % colors.length];
-                body.style.transition = 'background 0.5s ease';
-                setTimeout(() => { body.style.transition = ''; }, 500);
-            }
-        }
+    function changeBackgroundColor() {
+        body.style.background = colors[currentColorIndex];
+        body.style.transition = 'background 1s ease'; // Smooth 1-second transition
+        setTimeout(() => { body.style.transition = ''; }, 1000); // Reset transition after effect
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
     }
 
-    window.addEventListener('scroll', updateBackground, { passive: true });
-    window.addEventListener('touchmove', updateBackground, { passive: true });
-    requestAnimationFrame(updateBackground);
+    // Initial color
+    changeBackgroundColor();
+    // Change every 10 seconds
+    setInterval(changeBackgroundColor, 10000);
 
     console.log('Website loaded!');
 });
