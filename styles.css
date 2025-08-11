@@ -132,11 +132,20 @@ h2 {
     box-sizing: border-box;
 }
 
+.steps-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Allow wider layout for images */
+    margin: 0 auto;
+}
+
 .steps-container {
     position: relative;
-    width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
+    width: 60%; /* Steps take up 60% of the width */
+    max-width: 500px; /* Limit steps width */
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -195,6 +204,22 @@ h2 {
     justify-content: center;
     font-weight: bold;
     z-index: 2;
+    box-sizing: border-box;
+}
+
+.steps-images {
+    width: 35%; /* Images take up 35% of the width */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between images */
+}
+
+.step-image {
+    max-width: 200px; /* Fixed width for each image */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure images fit without distortion */
+    border-radius: 10px; /* Optional: Add a slight curve */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add depth */
     box-sizing: border-box;
 }
 
@@ -349,6 +374,21 @@ footer {
         margin-right: 0;
         margin-bottom: 10px;
         box-sizing: border-box;
+    }
+    .steps-wrapper {
+        flex-direction: column; /* Stack on mobile */
+    }
+    .steps-container {
+        width: 100%; /* Full width on mobile */
+        max-width: none;
+    }
+    .steps-images {
+        width: 100%; /* Full width on mobile */
+        margin-top: 20px; /* Space after steps */
+    }
+    .step-image {
+        max-width: 100%; /* Full width on mobile, scaled down */
+        height: auto;
     }
     /* Phone-specific phone number styling */
     small {
