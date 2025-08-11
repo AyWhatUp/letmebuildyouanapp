@@ -137,14 +137,14 @@ h2 {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    max-width: 1200px; /* Allow wider layout for images */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .steps-container {
     position: relative;
-    width: 60%; /* Steps take up 60% of the width */
-    max-width: 500px; /* Limit steps width */
+    width: 60%;
+    max-width: 500px;
     margin: 0;
     box-sizing: border-box;
 }
@@ -208,18 +208,18 @@ h2 {
 }
 
 .steps-images {
-    width: 35%; /* Images take up 35% of the width */
+    width: 35%;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Space between images */
+    gap: 20px;
 }
 
 .step-image {
-    max-width: 200px; /* Fixed width for each image */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure images fit without distortion */
-    border-radius: 10px; /* Optional: Add a slight curve */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add depth */
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
@@ -345,7 +345,7 @@ footer {
         box-sizing: border-box;
     }
     .dev-description {
-        max-width: 90%;
+        max-height: 90%;
         margin: 0 auto;
         box-sizing: border-box;
     }
@@ -375,20 +375,29 @@ footer {
         margin-bottom: 10px;
         box-sizing: border-box;
     }
-    .steps-wrapper {
-        flex-direction: column; /* Stack on mobile */
+    .header {
+        padding-top: 120px; /* Increased to avoid logo overlap */
     }
-    .steps-container {
-        width: 100%; /* Full width on mobile */
-        max-width: none;
+    .logo {
+        position: absolute;
+        top: 10px; /* Keep logo near top */
+        left: 10px;
+    }
+    .steps-wrapper {
+        flex-direction: column-reverse; /* Images above steps */
     }
     .steps-images {
-        width: 100%; /* Full width on mobile */
-        margin-top: 20px; /* Space after steps */
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* Horizontal on phone */
+        justify-content: space-between;
+        margin-bottom: 20px; /* Space before steps */
     }
     .step-image {
-        max-width: 100%; /* Full width on mobile, scaled down */
+        max-width: 33.33%; /* One-third width each */
         height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
     /* Phone-specific phone number styling */
     small {
@@ -401,15 +410,14 @@ footer {
 
 @media (max-width: 375px) { /* Target iPhone 8 and smaller */
     .header {
-        padding-top: 80px; /* Increase top padding to make space */
+        padding-top: 130px; /* Further adjust for smaller screens */
     }
     .logo {
-        position: static; /* Move logo below headline */
-        margin: 10px auto;
-        top: auto;
-        left: auto;
+        width: 100px; /* Slightly smaller logo */
+        top: 5px;
+        left: 5px;
     }
     h1 {
-        margin-top: 20px; /* Ensure headline has space */
+        margin-top: 20px;
     }
 }
