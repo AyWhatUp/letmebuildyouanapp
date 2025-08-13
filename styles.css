@@ -307,6 +307,18 @@ footer {
     box-sizing: border-box;
 }
 
+.video-container {
+    margin: 20px 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
 @media (max-width: 600px) {
     .logo {
         width: 120px;
@@ -376,25 +388,25 @@ footer {
         box-sizing: border-box;
     }
     .header {
-        padding-top: 120px; /* Increased to avoid logo overlap */
+        padding-top: 120px;
     }
     .logo {
         position: absolute;
-        top: 10px; /* Keep logo near top */
+        top: 10px;
         left: 10px;
     }
     .steps-wrapper {
-        flex-direction: column-reverse; /* Images above steps */
+        flex-direction: column-reverse;
     }
     .steps-images {
         width: 100%;
         display: flex;
-        flex-direction: row; /* Horizontal on phone */
+        flex-direction: row;
         justify-content: space-between;
-        margin-bottom: 20px; /* Space before steps */
+        margin-bottom: 20px;
     }
     .step-image {
-        max-width: 33.33%; /* One-third width each */
+        max-width: 33.33%;
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -408,12 +420,12 @@ footer {
     }
 }
 
-@media (max-width: 375px) { /* Target iPhone 8 and smaller */
+@media (max-width: 375px) {
     .header {
-        padding-top: 130px; /* Further adjust for smaller screens */
+        padding-top: 130px;
     }
     .logo {
-        width: 100px; /* Slightly smaller logo */
+        width: 100px;
         top: 5px;
         left: 5px;
     }
