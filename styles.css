@@ -315,6 +315,7 @@ footer {
 
 .video-container iframe {
     max-width: 100%;
+    width: 100%; /* Force to match container width */
     height: auto;
     aspect-ratio: 16 / 9;
 }
